@@ -1,0 +1,633 @@
+{
+	"info": {
+		"_postman_id": "ffa13764-6137-4b20-ad9f-0eab9efd5f04",
+		"name": "restaurant",
+		"description": "restaurant app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "sign up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e9c9cb94-86e2-47cb-acac-8c53719f2a9b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Your name\",\n\t\"email\": \"name@here.com\",\n\t\"type\": \"admin\",\n\t\"password\": \"000000\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						},
+						"description": "Sign up with 3 enum types:\nclient\nrealtor\nadmin"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce73614d-a3da-4153-819a-b624086a2cfc",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"update token\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"    pm.environment.set(\"token\", jsonData.data);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"kane@here.com\",\n\t\"type\": \"admin\",\n\t\"password\": \"000000\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "login with different types"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "restaurant",
+			"item": [
+				{
+					"name": "all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c858845b-828c-43c9-b685-c6fc842f54a7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var schema = {",
+									"  \"data\": {",
+									"    \"type\": \"array\"",
+									"  }",
+									"};",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(tv4.validate(jsonData.data, schema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/restaurant/all/{{lng}}/{{lat}}/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"all",
+								"{{lng}}",
+								"{{lat}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "available",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7147572c-5ba3-4dfe-9fd6-99065ab69e92",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var schema = {",
+									"  \"data\": {",
+									"    \"type\": \"array\"",
+									"  }",
+									"};",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(tv4.validate(jsonData.data, schema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/restaurant/available/{{lng}}/{{lat}}/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"available",
+								"{{lng}}",
+								"{{lat}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d122c8e3-1742-4550-be3d-9cbfaf9c1f69",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Update id\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"    pm.environment.set(\"id\", jsonData.data._id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Brand New Restaurant\",\n\t\"owner\": \"5d5038dae892884fd6d68316\",\n\t\"location\": {\n\t\t\"type\": \"Point\",\n\t\t\"coordinates\": [-73.9983, 40.715051]\n\t},\n\t\"available\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/restaurant",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"restaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5140a397-7c72-4a46-ba02-f4ad5a82efae",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Here it is\",\n\t\"available\": false\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/restaurant/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f60bcd9e-fdc2-47a6-9bfa-84d9a2949eb7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/restaurant/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3dfec407-a889-45a9-bc56-77a11997da8e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "4697522f-4ffa-4e8a-a4f1-02f3f4debfe3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "76d6b3a7-067f-4665-b2c6-eccf93309c01",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/all/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"all",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "14afd13b-129f-482a-a215-1590abc24c76",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"update userId\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"    pm.environment.set(\"userId\", jsonData.data._id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Kim\",\n\t\"email\": \"kim@test.com\",\n\t\"type\": \"admin\",\n\t\"password\": \"sdfseifee\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9ee585eb-d324-42e9-8dd6-df9576c9f38b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Jacky\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/user/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7215191a-88da-4a97-9219-62580eab213b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2febca8c-7a6a-4cec-887d-7d8a8aec2c19",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ad518e0-3f89-4633-ba8a-86b2cf9fb977",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "{{url}}/api/ping",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3337ae92-bf8d-479f-b40c-639d941fc768",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"pong\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/ping",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"ping"
+					]
+				},
+				"description": "ping"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "accessToken",
+				"value": "{{token}}",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "218fad8d-205c-41d4-b715-0b7a8bc3d02f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2c229ce4-ad38-4a78-8dd0-816f7cd96036",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
