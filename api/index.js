@@ -14,7 +14,8 @@ const mongoUrl = process.platform === 'darwin' ? devMongoUrl : prodMongoUrl
 mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
   autoIndex: false,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useUnifiedTopology: true,
 });
 
 
