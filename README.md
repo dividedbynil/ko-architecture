@@ -1,4 +1,4 @@
-# K.O Architecture Demo - [article](https://)
+# K.O Architecture Demo - [article](https://medium.com/@qualiable/a-minimalist-architecture-pattern-for-expressjs-api-applications-2290de42ece7)
 - Framework: ExpressJS
 - Database: MongoDB
 - Authentication: JSON Web Token
