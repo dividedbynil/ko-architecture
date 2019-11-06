@@ -1,5 +1,6 @@
 set -eo pipefail
 
+cd ./data
 mongo < import.js
 
 mongoimport --db kane --collection restaurants --file restaurants.json
