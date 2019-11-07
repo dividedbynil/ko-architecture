@@ -17,6 +17,7 @@ module.exports = {
   jwtSecretSalt: '87908798',
   devMongoUrl: 'mongodb://localhost/kane',
   prodMongoUrl: 'mongodb://localhost/kane',
+  testMongoUrl: 'mongodb://localhost/test',
 }
 ```
 
