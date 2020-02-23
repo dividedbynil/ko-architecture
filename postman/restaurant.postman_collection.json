@@ -20,6 +20,12 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
+									"",
+									"pm.test(\"update sign up user id\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"    pm.environment.set(\"signUpUserId\", jsonData.data._id);",
+									"});",
 									""
 								],
 								"type": "text/javascript"
@@ -515,6 +521,39 @@
 								"api",
 								"user",
 								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete sign up user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7215191a-88da-4a97-9219-62580eab213b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/{{signUpUserId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"{{signUpUserId}}"
 							]
 						}
 					},
