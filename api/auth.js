@@ -11,8 +11,9 @@ const { saltRounds, jwtSecretSalt } = require('../config')
 
 
 router
-.post('/signup', isValidPassword, hashPassword, signUp)
-.post('/login', isValidPassword, findByEmail, verifyPassword, login)
+.use(isValidPassword)
+.post('/signup', hashPassword, signUp)
+.post('/login', findByEmail, verifyPassword, login)
 
 .use(notFound)
 
