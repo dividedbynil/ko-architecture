@@ -1,4 +1,4 @@
-https://github.com/dividedbynil/ko-architecture/workflows/CI/badge.svg
+![](https://github.com/dividedbynil/ko-architecture/workflows/CI/badge.svg)
 
 # K.O Architecture Demo
 - Framework: ExpressJS
