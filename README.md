@@ -32,7 +32,7 @@ mongod
 
 ### Open another terminal in this directory:
 ```
-sh ./data/import.sh
+bash ./data/import.sh
 ```
 
 ## Start the server with

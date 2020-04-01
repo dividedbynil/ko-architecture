@@ -28,7 +28,7 @@ jobs:
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
 
-    - run: sh ./data/import.sh
+    - run: bash ./data/import.sh
 
     - run: npm install
 
