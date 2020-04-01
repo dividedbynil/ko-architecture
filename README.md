@@ -1,3 +1,5 @@
+https://github.com/dividedbynil/ko-architecture/workflows/CI/badge.svg
+
 # K.O Architecture Demo
 - Framework: ExpressJS
 - Database: MongoDB
@@ -10,8 +12,8 @@
 Postman APIs collection and environment can be imported from `./postman/`
 
 ## Pre-running
-Add a `./config.js` file
-```
+Update the `./config.js` file
+```js
 module.exports = {
   saltRounds: 10,
   jwtSecretSalt: '87908798',
