@@ -5,7 +5,7 @@ const validator = require('validator')
 
 
 const userSchema = new Schema({
-	_id: ObjectId,
+  _id: ObjectId,
   name: { type: String, required: true },
   email: {
     type: String,
